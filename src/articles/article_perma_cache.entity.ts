@@ -1,7 +1,12 @@
-import { BaseEntity, Column, Entity } from 'typeorm';
+import { CommonEntityFields } from 'src/common/BaseEntity';
+import { Column, Entity, Index } from 'typeorm';
 
 @Entity({ name: 'ArticlePermaCache' })
-export class ArticlePermaCacheEntity extends BaseEntity {
+export class ArticlePermaCacheEntity extends CommonEntityFields {
+  @Column()
+  @Index()
+  url: string;
+
   @Column()
   authors: string; /** Comma-separated list */
 

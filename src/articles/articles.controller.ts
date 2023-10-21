@@ -11,7 +11,7 @@ export class ArticlesController {
 
   @Get()
   async getArticles(@UserId() userId: string) {
-    return { test: 'teste', userId };
+    return this.articlesService.getUserArticleRefs(userId);
   }
 
   @Post()

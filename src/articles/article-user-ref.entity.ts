@@ -1,10 +1,11 @@
-import { BaseEntity, Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { ArticleRefStatus } from './article.consts';
 import { UsersEntity } from 'src/users/users.entity';
 import { ArticlePermaCacheEntity } from './article_perma_cache.entity';
+import { CommonEntityFields } from 'src/common/BaseEntity';
 
 @Entity({ name: 'ArticleUserRef' })
-export class ArticleUserRefEntity extends BaseEntity {
+export class ArticleUserRefEntity extends CommonEntityFields {
   @Column({ type: 'enum', enum: ArticleRefStatus })
   status: ArticleRefStatus;
 
@@ -22,4 +23,7 @@ export class ArticleUserRefEntity extends BaseEntity {
 
   @Column({ nullable: true })
   articleId: string | null;
+
+  @Column()
+  articleUrl: string;
 }
